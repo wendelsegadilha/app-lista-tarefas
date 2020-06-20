@@ -56,15 +56,20 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView,
                 new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
-                    public void onItemClick(View view, int position) { //aletracao da tarefa
+                    public void onItemClick(View view, int position) { //alteracao da tarefa
 
                         //recuperar tarefa para edicao
                         Tarefa tarefaSelecionada = listaTarefas.get(position);
 
-                        //envia tarefa para tela de adicinar tarefa
-                        Intent intent = new Intent(MainActivity.this, AdicionarTarefaActivity.class);
-                        intent.putExtra("tarefaSelecionada", tarefaSelecionada);
-                        startActivity(intent);
+                        //verifica se a tarefa não foi concluida
+                        if(listaTarefas.get(position).getStatus() == 0){
+                            //envia tarefa para tela de adicinar tarefa para ediçao
+                            Intent intent = new Intent(MainActivity.this, AdicionarTarefaActivity.class);
+                            intent.putExtra("tarefaSelecionada", tarefaSelecionada);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Tarefa já concluída!", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
