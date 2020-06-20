@@ -32,6 +32,11 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Tarefa tarefa = listaTarefas.get(position);
         holder.tarefa.setText(tarefa.getNomeTarefa());
+        if (tarefa.getStatus() == 1){
+            holder.status.setText("Concluída");
+        }else{
+            holder.status.setText("Não concluída");
+        }
     }
 
     @Override
@@ -42,9 +47,11 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tarefa;
+        private TextView status;
         public MyViewHolder(View itemView) {
             super(itemView);
             tarefa = itemView.findViewById(R.id.textTarefa);
+            status = itemView.findViewById(R.id.textStatus);
         }
     }
 

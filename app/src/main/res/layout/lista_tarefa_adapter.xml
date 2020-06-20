@@ -9,8 +9,13 @@
         android:id="@+id/textTarefa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="6dp"
         android:text="Estudar Android"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp" />
 
 </LinearLayout>
