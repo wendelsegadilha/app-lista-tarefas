@@ -22,7 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS ");
         sql.append(TABELA_NOME);
-        sql.append(" (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, status INT(1) NOT NULL);");
+        sql.append(" (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, status INT(1) NOT NULL, data_status VARCHAR(25));");
 
         try{
             db.execSQL(sql.toString());

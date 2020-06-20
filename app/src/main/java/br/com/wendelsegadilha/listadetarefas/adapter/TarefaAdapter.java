@@ -37,6 +37,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
         }else{
             holder.status.setText("Não concluída");
         }
+        holder.dataStatus.setText(tarefa.getDataStatus());
     }
 
     @Override
@@ -48,10 +49,12 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
 
         private TextView tarefa;
         private TextView status;
+        private TextView dataStatus;
         public MyViewHolder(View itemView) {
             super(itemView);
             tarefa = itemView.findViewById(R.id.textTarefa);
             status = itemView.findViewById(R.id.textStatus);
+            dataStatus = itemView.findViewById(R.id.textDataStatus);
         }
     }
 

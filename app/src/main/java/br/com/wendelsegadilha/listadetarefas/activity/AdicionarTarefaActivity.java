@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import br.com.wendelsegadilha.listadetarefas.R;
 import br.com.wendelsegadilha.listadetarefas.dao.TarefaDAO;
 import br.com.wendelsegadilha.listadetarefas.model.Tarefa;
@@ -65,6 +68,7 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
                         //verifica se status foi marcado como concluído
                         if (checkStatus.isChecked()){
                             tarefa.setStatus(1);
+                            tarefa.setDataStatus(getDateTime());
                         }
                         if(tarefaDAO.atualizar(tarefa)){//verifica se atualizou a tarefa
                             finish();//finaliza a activity
@@ -80,6 +84,7 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
                         tarefa = new Tarefa();
                         tarefa.setNomeTarefa(nomeTarefa);
                         tarefa.setStatus(0);
+                        tarefa.setDataStatus("");
                         if(tarefaDAO.salvar(tarefa)){ //verifica se salvou a tarefa
                             finish();//finaliza a activity
                             Toast.makeText(getApplicationContext(), "Sucesso ao salvar tarefa", Toast.LENGTH_SHORT).show();
@@ -93,5 +98,15 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /*
+     *Recupera a data atual do sistema
+     */
+    private String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }

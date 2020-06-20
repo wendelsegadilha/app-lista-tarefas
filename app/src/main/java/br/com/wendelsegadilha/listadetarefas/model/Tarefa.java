@@ -7,14 +7,16 @@ public class Tarefa implements Serializable {
     private Long id;
     private String nomeTarefa;
     private int status;
+    private String dataStatus;
 
     public Tarefa() {
     }
 
-    public Tarefa(Long id, String nomeTarefa, int status) {
+    public Tarefa(Long id, String nomeTarefa, int status, String dataStatus) {
         this.id = id;
         this.nomeTarefa = nomeTarefa;
         this.status = status;
+        this.dataStatus = dataStatus;
     }
 
     public Long getId() {
@@ -39,5 +41,13 @@ public class Tarefa implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getDataStatus() {
+        return dataStatus;
+    }
+
+    public void setDataStatus(String dataStatus) {
+        this.dataStatus = dataStatus;
     }
 }
